@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
                         KeyCode.L, KeyCode.Semicolon, KeyCode.BackQuote };
 
     public static Ship ship;
+    public static float succes_rate;
+    public static int total_notes = 0, good_notes = 0;
 
     void Start()
     {
@@ -18,6 +20,11 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < Enum.GetNames(typeof(Notes)).Length; i++)
             notes.Add(new Note((Notes)i));
+    }
+
+    private void Update()
+    {
+        Debug.Log(good_notes + "/" + total_notes);
     }
 
     void OnGUI()

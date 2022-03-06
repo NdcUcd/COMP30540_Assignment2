@@ -14,10 +14,10 @@ public class Note
     public Note(GameManager.Notes name) {
         this.name = name;
 
-        //Get position at which notes are.
+        //Get position at which notes are
         position_y = GameObject.Find("Notes").transform.GetChild((int)name).transform.position.y;
+
         key_associated = GameManager.keys[(int)name];
-        //Debug.Log(name + " position is " + position_y + " " + key_associated);
     }
 
     public GameManager.Notes Name {

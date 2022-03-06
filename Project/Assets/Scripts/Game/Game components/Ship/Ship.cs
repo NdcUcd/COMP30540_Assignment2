@@ -29,7 +29,6 @@ public class Ship : MonoBehaviour
 
     void Shoot(GameManager.Notes note)
     {
-        Debug.Log("shoot");
         GameObject bullet_go = Instantiate(bullet);
         bullet_go.GetComponent<Bullet>().Note = note;
         Transform bulletTransform = bullet_go.transform;
