@@ -25,8 +25,8 @@ public class Bullet : MonoBehaviour
 
         if (collision_go.layer == 6 && note == collision.transform.GetComponent<Asteroid>().Note) //Collision with asteroid
             Collision_With_Asteroid(collision_go); 
-        else if (collision_go.layer == 8) //Collision with right border limit
-            Destroy(gameObject);              
+        else if (collision_go.layer == 8)                                                         //Collision with right border limit
+            Collision_With_Right_Border();              
     }
     public GameManager.Notes Note
     {
@@ -36,9 +36,14 @@ public class Bullet : MonoBehaviour
 
     void Collision_With_Asteroid(GameObject asteroid_go)
     {
-        Debug.Log("good note");
-        GameManager.good_notes++;
+        GameManager.GoodNote();
         Destroy(asteroid_go.gameObject);
+        Destroy(gameObject);
+    }
+
+    void Collision_With_Right_Border()
+    {
+        GameManager.LoseLife();
         Destroy(gameObject);
     }
 }

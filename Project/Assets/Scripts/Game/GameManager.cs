@@ -11,8 +11,8 @@ public class GameManager : MonoBehaviour
                         KeyCode.L, KeyCode.Semicolon, KeyCode.BackQuote };
 
     public static Ship ship;
-    public static float succes_rate;
-    public static int total_notes = 0, good_notes = 0;
+    static int succes_rate;
+    static float total_notes = 0, good_notes = 0;
 
     void Start()
     {
@@ -20,11 +20,19 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < Enum.GetNames(typeof(Notes)).Length; i++)
             notes.Add(new Note((Notes)i));
+
+        Update_Score();
     }
 
-    private void Update()
+    public static void Update_Score()
     {
-        Debug.Log(good_notes + "/" + total_notes);
+        if (total_notes == 0) {
+            UpdateScore.Update_Score(100);
+            return;
+        }
+
+        succes_rate = (int)(good_notes / total_notes * 100);
+        UpdateScore.Update_Score(succes_rate);
     }
 
     void OnGUI()
@@ -36,8 +44,22 @@ public class GameManager : MonoBehaviour
                 ship.Move(key);
     }
 
+    public int Succes_Rate
+    {
+        get { return succes_rate; }
+        set { succes_rate = value; }
+    }
+
+    public static void GoodNote()
+    {
+        good_notes++;
+        total_notes++;
+        Update_Score();
+    }
+
     public static void LoseLife() {
-        Debug.Log("Lose life");
+        total_notes++;
+        Update_Score();
     }
 
     public enum Notes
