@@ -1,3 +1,4 @@
+using MidiJack;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,8 @@ public class GameManager : MonoBehaviour
     public static KeyCode[] keys = {  KeyCode.A , KeyCode.S, KeyCode.D, KeyCode.F,
                         KeyCode.G, KeyCode.H, KeyCode.J, KeyCode.K,
                         KeyCode.L, KeyCode.Semicolon, KeyCode.BackQuote };
+
+    static int[] keyboard_note_number = { 48, 50, 52, 53, 55, 57, 59, 60, 62, 64, 65, 67, 69, 71, 72 };
 
     public static Ship ship;
     static int succes_rate;
@@ -26,7 +29,8 @@ public class GameManager : MonoBehaviour
 
     public static void Update_Score()
     {
-        if (total_notes == 0) {
+        if (total_notes == 0)
+        {
             UpdateScore.Update_Score(100);
             return;
         }
@@ -39,9 +43,25 @@ public class GameManager : MonoBehaviour
     {
         Event e = Event.current;
 
+        //Inputs from keyboard
         foreach (KeyCode key in keys)
             if (Input.GetKeyDown(key) && e.isKey && e.keyCode == key)
+            {
                 ship.Move(key);
+                return;
+            }
+
+        //Inputs from MIDI keyboard
+        foreach (int key in keyboard_note_number)
+            if (MidiMaster.GetKeyDown(key))
+            {
+                int key_index = Array.IndexOf(keyboard_note_number, key);
+
+                if (key_index < keys.Length && key_index >= 0)
+                    ship.Move(keys[key_index]);
+
+                return;
+            }
     }
 
     public int Succes_Rate
@@ -57,7 +77,8 @@ public class GameManager : MonoBehaviour
         Update_Score();
     }
 
-    public static void LoseLife() {
+    public static void LoseLife()
+    {
         total_notes++;
         Update_Score();
     }
