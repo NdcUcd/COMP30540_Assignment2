@@ -19,17 +19,6 @@ public class Ship : MonoBehaviour
         Shoot(note_played.Name);
     }
 
-    public void Move(int key)
-    {
-        Note note_played = GameManager.notes[Array.IndexOf(GameManager.keys, key)];
-
-        transform.position = new Vector3(original_position.x,
-                                        note_played.Position_Y,
-                                        original_position.z);
-
-        Shoot(note_played.Name);
-    }
-
     void Shoot(GameManager.Notes note)
     {
         GameObject bullet_go = Instantiate(bullet);

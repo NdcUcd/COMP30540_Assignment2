@@ -17,26 +17,36 @@ public class GameManager : MonoBehaviour
     static int succes_rate;
     static float total_notes = 0, good_notes = 0;
 
+    Notes_Manager asteroid_Manager;
+    public static Level level;
+
     void Start()
     {
+        level = new Level();
         ship = FindObjectOfType<Ship>();
 
         for (int i = 0; i < Enum.GetNames(typeof(Notes)).Length; i++)
             notes.Add(new Note((Notes)i));
 
         Update_Score();
+
+        asteroid_Manager = FindObjectOfType<Notes_Manager>();
     }
 
-    public static void Update_Score()
+    int i = 0;
+    void Update()
     {
-        if (total_notes == 0)
-        {
-            UpdateScore.Update_Score(100);
-            return;
-        }
+        float time_before_next_asteroid = Level.Time_Before_Next_Asteroid;
+        time_before_next_asteroid -= Time.deltaTime;
 
-        succes_rate = (int)(good_notes / total_notes * 100);
-        UpdateScore.Update_Score(succes_rate);
+        if (time_before_next_asteroid <= 0)
+        {
+            time_before_next_asteroid = Level.Time_Before_Next_Asteroid;
+            asteroid_Manager.SpawnAsteroid(notes[i]);
+
+            i++;
+            if (i > notes.Count - 1) i = 0;
+        }
     }
 
     void OnGUI()
@@ -64,6 +74,18 @@ public class GameManager : MonoBehaviour
             }
     }
 
+    public static void Update_Score()
+    {
+        if (total_notes == 0)
+        {
+            UpdateScore.Update_Score(100);
+            return;
+        }
+
+        succes_rate = (int)(good_notes / total_notes * 100);
+        UpdateScore.Update_Score(succes_rate);
+    }
+
     public int Succes_Rate
     {
         get { return succes_rate; }
@@ -77,7 +99,7 @@ public class GameManager : MonoBehaviour
         Update_Score();
     }
 
-    public static void LoseLife()
+    public static void False_Note()
     {
         total_notes++;
         Update_Score();

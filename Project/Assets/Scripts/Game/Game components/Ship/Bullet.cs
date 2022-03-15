@@ -43,7 +43,7 @@ public class Bullet : MonoBehaviour
 
     void Collision_With_Right_Border()
     {
-        GameManager.LoseLife();
+        GameManager.False_Note();
         Destroy(gameObject);
     }
 }

@@ -34,7 +34,7 @@ public class Asteroid : MonoBehaviour
 
     void Collision_Base()
     {
-        GameManager.LoseLife();
+        GameManager.False_Note();
         Destroy(gameObject);
     }
 }
