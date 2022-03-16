@@ -8,7 +8,8 @@ public class Level
     static float speed, time_before_next_note;
     static GameManager.Key key;
 
-    public Level() { current_level(1); }
+    public Level() { current_level(0); }
+    public Level(int level) { current_level(level); }
 
     public static void current_level(int a_level_number)
     {
@@ -33,6 +34,10 @@ public class Level
             case 3:
                 break;
             case 4:
+                break;
+            default:
+                Debug.Log(tessiturat + " " + max_interval + " " + speed + " " + time_before_next_note + " " + total_nb_of_notes);
+                Debug.Log("Default");
                 break;
         }
     }
@@ -67,7 +72,7 @@ public class Level
         set { speed = value; }
     }
 
-    public static float Time_Before_Next_Asteroid
+    public static float Time_Before_Next_Note
     {
         get { return time_before_next_note; }
         set { time_before_next_note = value; }

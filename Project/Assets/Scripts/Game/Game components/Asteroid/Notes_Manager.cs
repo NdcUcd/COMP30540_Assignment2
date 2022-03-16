@@ -3,13 +3,12 @@ using UnityEngine;
 
 public class Notes_Manager : MonoBehaviour
 {
-    public static List<GameObject> asteroids = new List<GameObject>();
     [SerializeField] GameObject asteroid_go;
     float time_before_next_note;
 
     void Start()
     {
-        time_before_next_note = Level.Time_Before_Next_Asteroid;
+        time_before_next_note = Level.Time_Before_Next_Note;
     }
 
     void Update()
@@ -26,14 +25,17 @@ public class Notes_Manager : MonoBehaviour
         int node_index = Get_New_Note();
 
         SpawnAsteroid(GameManager.notes[node_index]);
-        time_before_next_note = Level.Time_Before_Next_Asteroid;
-        Level.Total_Notes--;
-
-        if (Level.Total_Notes < 0) Next_Level();
+        time_before_next_note = Level.Time_Before_Next_Note;
 
         previous_node_index = node_index;
+
+        if (GameManager.infiniteMode) return;
+
+        Level.Total_Notes--;
+        if (Level.Total_Notes <= 0) Next_Level();
     }
 
+    //Determine which note is next to be spawned
     int Get_New_Note()
     {
         int node_index = 0;
@@ -50,14 +52,12 @@ public class Notes_Manager : MonoBehaviour
     {
         GameObject new_asteroid = Instantiate(asteroid_go);
         new_asteroid.GetComponent<Asteroid>().Note = note.Name;
+
         Transform new_asteroid_transform = new_asteroid.transform;
 
-        asteroids.Add(new_asteroid);
-
         new_asteroid_transform.SetParent(this.transform);
-        new_asteroid_transform.name = note.Name + " - Asteroid " + asteroids.Count;
+        new_asteroid_transform.name = note.Name + " - Asteroid " + new_asteroid_transform.GetSiblingIndex();
         new_asteroid_transform.position = new Vector3(transform.position.x, note.Position_Y, transform.position.z);
-
     }
 
     void Next_Level()

@@ -23,10 +23,17 @@ public class Bullet : MonoBehaviour
     {
         GameObject collision_go = collision.gameObject;
 
-        if (collision_go.layer == 6 && note == collision.transform.GetComponent<Asteroid>().Note) //Collision with asteroid
-            Collision_With_Asteroid(collision_go); 
-        else if (collision_go.layer == 8)                                                         //Collision with right border limit
-            Collision_With_Right_Border();              
+        if (collision_go.layer == 6 && note == collision.transform.GetComponent<Asteroid>().Note)
+        { 
+            if (collision.gameObject.transform.GetSiblingIndex() == 0) //We only want to destroy an asteroid if it's the one closer to the base
+                Collision_With_Asteroid(collision_go);
+            else 
+                Destroy(gameObject);
+        }
+        else if (collision_go.layer == 8)
+        {                                                        //Collision with right border limit
+            Collision_With_Right_Border();
+        }
     }
     public GameManager.Notes Note
     {
