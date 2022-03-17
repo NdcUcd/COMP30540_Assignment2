@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Level
 {
-    static int level_number, tessiturat, max_interval, total_nb_of_notes;
+    static int initialNbOfNotes = 5, level_number, tessiturat, max_interval, total_nb_of_notes;
     static float speed, time_before_next_note;
     static GameManager.Key key;
 
@@ -22,24 +20,34 @@ public class Level
                 max_interval = 1;
                 speed = 5;
                 time_before_next_note = .5f;
-                total_nb_of_notes = 10;
+                total_nb_of_notes = 5;
                 break;
             case 2:
                 tessiturat = 4;
                 max_interval = 3;
                 speed = 5;
                 time_before_next_note = 1f;
-                total_nb_of_notes = 15;
+                total_nb_of_notes = 5;
                 break;
-            case 3:
-                break;
-            case 4:
-                break;
+            //case 3:
+            //    break;
+            //case 4:
+            //    break;
             default:
+                tessiturat = 7;
+                max_interval = 4;
+                speed = 5;
+                time_before_next_note = .5f;
+                total_nb_of_notes = 15;
                 Debug.Log(tessiturat + " " + max_interval + " " + speed + " " + time_before_next_note + " " + total_nb_of_notes);
                 Debug.Log("Default");
                 break;
         }
+    }
+
+    public static int InitialNbOfNotes
+    {
+        get { return initialNbOfNotes; }
     }
 
     public static int Level_Number

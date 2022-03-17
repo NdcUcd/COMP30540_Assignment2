@@ -5,10 +5,12 @@ public class Notes_Manager : MonoBehaviour
 {
     [SerializeField] GameObject asteroid_go;
     float time_before_next_note;
+    GameManager gameManager;
 
     void Start()
     {
         time_before_next_note = Level.Time_Before_Next_Note;
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     void Update()
@@ -31,9 +33,16 @@ public class Notes_Manager : MonoBehaviour
 
         if (GameManager.infiniteMode) return;
 
-        Level.Total_Notes--;
-        if (Level.Total_Notes <= 0) Next_Level();
+        if (GameManager.AskAgain)
+        {
+            if (Level.Total_Notes <= 0 && gameManager.Succes_Rate >= 90)
+                gameManager.DisplayMenu(false);
+            else
+                Level.Total_Notes--;
+        }
     }
+
+    public void ResetTotalNotes() { Level.Total_Notes = 5; }
 
     //Determine which note is next to be spawned
     int Get_New_Note()
@@ -41,9 +50,9 @@ public class Notes_Manager : MonoBehaviour
         int node_index = 0;
 
         do
-        {
             node_index = Random.Range(0, Level.Tessiturat);
-        } while (Mathf.Abs(previous_node_index - node_index) > Level.Max_Interval || previous_node_index == node_index);
+        while (Mathf.Abs(previous_node_index - node_index) > Level.Max_Interval 
+            || previous_node_index == node_index);  //Because I don't want the same notes 2 times in a row
 
         return node_index;
     }
@@ -60,9 +69,15 @@ public class Notes_Manager : MonoBehaviour
         new_asteroid_transform.position = new Vector3(transform.position.x, note.Position_Y, transform.position.z);
     }
 
-    void Next_Level()
+    public void DestroyAllAsteroids()
     {
-        Level.current_level(Level.Level_Number + 1);
-        UpdateLevel_UI.Update_Level();
+        for (int i = 0; i < transform.childCount; i++)
+            Destroy(transform.GetChild(i).gameObject);
     }
+
+    //void Next_Level()
+    //{
+    //    Level.current_level(Level.Level_Number + 1);
+    //    UpdateLevel_UI.Update_Level();
+    //}
 }

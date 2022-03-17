@@ -2,6 +2,8 @@ using MidiJack;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,7 +16,7 @@ public class GameManager : MonoBehaviour
     static int[] keyboard_note_number = { 48, 50, 52, 53, 55, 57, 59, 60, 62, 64, 65, 67, 69, 71, 72 };
 
     public static Ship ship;
-    static int succes_rate;
+    static int succes_rate, levelToLoad = 1;
     static float total_notes = 0, good_notes = 0;
 
     Notes_Manager asteroid_Manager;
@@ -22,11 +24,12 @@ public class GameManager : MonoBehaviour
     public static bool infiniteMode;
 
     [SerializeField] GameObject menus;
+    static bool askAgain = true;
 
     void Start()
     {
         if (infiniteMode) level = new Level();
-        else new Level(1);
+        else new Level(levelToLoad);
 
         ship = FindObjectOfType<Ship>();
 
@@ -39,21 +42,8 @@ public class GameManager : MonoBehaviour
         asteroid_Manager = FindObjectOfType<Notes_Manager>();
     }
 
-    int i = 0;
     void Update()
     {
-        float time_before_next_asteroid = Level.Time_Before_Next_Note;
-        time_before_next_asteroid -= Time.deltaTime;
-
-        if (time_before_next_asteroid <= 0)
-        {
-            time_before_next_asteroid = Level.Time_Before_Next_Note;
-            asteroid_Manager.SpawnAsteroid(notes[i]);
-
-            i++;
-            if (i > notes.Count - 1) i = 0;
-        }
-
         if (Input.GetKeyDown(KeyCode.Escape)) DisplayMenu(true);
     }
 
@@ -82,12 +72,18 @@ public class GameManager : MonoBehaviour
             }
     }
 
+    public static void SetLevelNbToLoad(int nb) { levelToLoad = nb; }
+
     public void DisplayMenu(bool pause)
     {
-        menus.SetActive(!menus.activeSelf);
+        bool menuIsActive = menus.activeSelf;
+        menus.SetActive(!menuIsActive);
 
-        if (pause) menus.transform.GetChild(0).gameObject.SetActive(menus.activeSelf);
-        else       menus.transform.GetChild(1).gameObject.SetActive(menus.activeSelf);
+        if (pause) menus.transform.GetChild(0).gameObject.SetActive(menuIsActive);
+        else       menus.transform.GetChild(1).gameObject.SetActive(!menuIsActive);
+
+        if (!menuIsActive) Time.timeScale = 0;
+        else Time.timeScale = 1;
     }
 
     public static void Update_Score()
@@ -102,10 +98,35 @@ public class GameManager : MonoBehaviour
         UpdateScore.Update_Score(succes_rate);
     }
 
+    public void NextLevel() { 
+        Level.current_level(Level.Level_Number + 1);
+        UpdateLevel_UI.Update_Level();
+        asteroid_Manager.DestroyAllAsteroids();
+        ship.DestroyAllBullets();
+        succes_rate = 0;
+    }
+
+    public void SetAskAgain()
+    {
+        askAgain = !GameObject.Find("Toggle ask again").GetComponent<Toggle>().isOn;
+    }
+
     public int Succes_Rate
     {
         get { return succes_rate; }
         set { succes_rate = value; }
+    }
+
+    public int LevelToLoad
+    {
+        get { return levelToLoad; }
+        set { levelToLoad = value; }
+    }
+
+    public static bool AskAgain
+    {
+        get { return askAgain; }
+        set { askAgain = value; }
     }
 
     public static void GoodNote()
