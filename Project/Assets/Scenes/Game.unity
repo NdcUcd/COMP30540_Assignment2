@@ -635,7 +635,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 234578112}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10, y: 0, z: 0}
+  m_LocalPosition: {x: -8.25, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 10, z: 0.5}
   m_Children: []
   m_Father: {fileID: 991381245}
@@ -2158,7 +2158,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78aa30417abf0eb4182de8f3dc790e9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  asteroid_go: {fileID: 3197116299640941361, guid: 7b3f13e895186a44e9c517fd8d89c910, type: 3}
+  asteroid_go:
+  - {fileID: 1379459666093482, guid: 28548987d12c89f4bb36b9bef96ceebe, type: 3}
+  - {fileID: 1261580409772778, guid: 8f2dfc4f0e7adfe4780f9eb51caeef8b, type: 3}
+  - {fileID: 1603465440411664, guid: 52dd948aee398dd43a762ccad8615550, type: 3}
+  - {fileID: 1976545440620104, guid: 35ab5042a61b422478913511a2f89312, type: 3}
+  - {fileID: 1875134094539988, guid: 20bc67712a091434d92900911e095610, type: 3}
+  - {fileID: 1162800846036822, guid: a6e721628aa196b4a8029e306a37b7f1, type: 3}
+  - {fileID: 1025360036135046, guid: 6b15349ae7f0c4c41ad09993616a147e, type: 3}
 --- !u!1001 &862017746
 PrefabInstance:
   m_ObjectHideFlags: 0

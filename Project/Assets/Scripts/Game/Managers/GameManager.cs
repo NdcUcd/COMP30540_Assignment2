@@ -51,25 +51,28 @@ public class GameManager : MonoBehaviour
     {
         Event e = Event.current;
 
-        //Inputs from keyboard
-        foreach (KeyCode key in keys)
-            if (Input.GetKeyDown(key) && e.isKey && e.keyCode == key)
-            {
-                ship.Move(key);
-                return;
-            }
+        if (Ship.CanMove)
+        {
+            //Inputs from keyboard
+            foreach (KeyCode key in keys)
+                if (Input.GetKeyDown(key) && e.isKey && e.keyCode == key)
+                {
+                    ship.Move(key);
+                    return;
+                }
 
-        //Inputs from MIDI keyboard
-        foreach (int key in keyboard_note_number)
-            if (MidiMaster.GetKeyDown(key))
-            {
-                int key_index = Array.IndexOf(keyboard_note_number, key);
+            //Inputs from MIDI keyboard
+            foreach (int key in keyboard_note_number)
+                if (MidiMaster.GetKeyDown(key))
+                {
+                    int key_index = Array.IndexOf(keyboard_note_number, key);
 
-                if (key_index < keys.Length && key_index >= 0)
-                    ship.Move(keys[key_index]);
+                    if (key_index < keys.Length && key_index >= 0)
+                        ship.Move(keys[key_index]);
 
-                return;
-            }
+                    return;
+                }
+        }
     }
 
     public static void SetLevelNbToLoad(int nb) { levelToLoad = nb; }
@@ -84,6 +87,8 @@ public class GameManager : MonoBehaviour
 
         if (!menuIsActive) Time.timeScale = 0;
         else Time.timeScale = 1;
+
+        Ship.CanMove = menuIsActive;
     }
 
     public static void Update_Score()

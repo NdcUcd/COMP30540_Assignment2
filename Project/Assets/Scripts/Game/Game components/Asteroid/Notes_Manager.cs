@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Notes_Manager : MonoBehaviour
 {
-    [SerializeField] GameObject asteroid_go;
+    [SerializeField] List<GameObject> asteroid_go = new List<GameObject>();
     float time_before_next_note;
     GameManager gameManager;
 
@@ -42,7 +42,7 @@ public class Notes_Manager : MonoBehaviour
         }
     }
 
-    public void ResetTotalNotes() { Level.Total_Notes = 5; }
+    public void ResetTotalNotes() { Level.Total_Notes = Level.InitialNbOfNotes; }
 
     //Determine which note is next to be spawned
     int Get_New_Note()
@@ -59,8 +59,9 @@ public class Notes_Manager : MonoBehaviour
 
     public void SpawnAsteroid(Note note)
     {
-        GameObject new_asteroid = Instantiate(asteroid_go);
-        new_asteroid.GetComponent<Asteroid>().Note = note.Name;
+        GameObject new_asteroid = Instantiate(asteroid_go[Random.Range(0, asteroid_go.Count)]);
+        Asteroid asteroidScript = new_asteroid.AddComponent<Asteroid>();
+        asteroidScript.Note = note.Name;
 
         Transform new_asteroid_transform = new_asteroid.transform;
 
@@ -74,10 +75,4 @@ public class Notes_Manager : MonoBehaviour
         for (int i = 0; i < transform.childCount; i++)
             Destroy(transform.GetChild(i).gameObject);
     }
-
-    //void Next_Level()
-    //{
-    //    Level.current_level(Level.Level_Number + 1);
-    //    UpdateLevel_UI.Update_Level();
-    //}
 }

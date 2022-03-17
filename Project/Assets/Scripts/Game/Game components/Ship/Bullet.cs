@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -24,10 +22,10 @@ public class Bullet : MonoBehaviour
         GameObject collision_go = collision.gameObject;
 
         if (collision_go.layer == 6 && note == collision.transform.GetComponent<Asteroid>().Note)
-        { 
+        {
             if (collision.gameObject.transform.GetSiblingIndex() == 0) //We only want to destroy an asteroid if it's the one closer to the base
                 Collision_With_Asteroid(collision_go);
-            else 
+            else
                 Destroy(gameObject);
         }
         else if (collision_go.layer == 8)

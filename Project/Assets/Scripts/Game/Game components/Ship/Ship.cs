@@ -5,6 +5,7 @@ public class Ship : MonoBehaviour
 {
     [SerializeField] GameObject bullet;
     Vector3 original_position;
+    static bool canMove = true;
 
     void Start() { original_position = transform.position; }
 
@@ -17,6 +18,12 @@ public class Ship : MonoBehaviour
                                         original_position.z);
 
         Shoot(note_played.Name);
+    }
+
+    public static bool CanMove
+    {
+        get { return canMove; }
+        set { canMove = value; }
     }
 
     void Shoot(GameManager.Notes note)
