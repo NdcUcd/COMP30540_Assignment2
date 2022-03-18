@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class Level
 {
     static int initialNbOfNotes = 5, level_number, tessiturat, max_interval, total_nb_of_notes;
