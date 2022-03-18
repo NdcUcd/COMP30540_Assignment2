@@ -20,7 +20,7 @@ public class Notes_Manager : MonoBehaviour
         if (time_before_next_note <= 0) Call_Next_Note();
     }
 
-    int previous_node_index;
+    int previouNoteIndex;
 
     void Call_Next_Note()
     {
@@ -29,7 +29,7 @@ public class Notes_Manager : MonoBehaviour
         SpawnAsteroid(GameManager.notes[node_index]);
         time_before_next_note = Level.Time_Before_Next_Note;
 
-        previous_node_index = node_index;
+        previouNoteIndex = node_index;
 
         if (GameManager.infiniteMode) return;
 
@@ -47,14 +47,16 @@ public class Notes_Manager : MonoBehaviour
     //Determine which note is next to be spawned
     int Get_New_Note()
     {
-        int node_index = 0;
+        int noteIndex = 0;
 
         do
-            node_index = Random.Range(0, Level.Tessiturat);
-        while (Mathf.Abs(previous_node_index - node_index) > Level.Max_Interval 
-            || previous_node_index == node_index);  //Because I don't want the same notes 2 times in a row
+            noteIndex = Random.Range(0, Level.Tessiturat);
+        while (Mathf.Abs(previouNoteIndex - noteIndex) > Level.Max_Interval - 1
+            || previouNoteIndex == noteIndex);  //Because I don't want the same notes 2 times in a row
+        
+        previouNoteIndex = noteIndex;
 
-        return node_index;
+        return noteIndex;
     }
 
     public void SpawnAsteroid(Note note)

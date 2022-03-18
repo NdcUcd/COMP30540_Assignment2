@@ -29,13 +29,12 @@ public class InfiniteModeManager : MonoBehaviour
             switch (i)
             {
                 case 0:
-                    Level.Tessiturat = (int)parameterTransform.GetChild(i).GetComponentInChildren<Slider>().value;
+                    Level.Tessiturat = (int) parameterTransform.GetChild(i).GetComponentInChildren<Slider>().value;
                     break;
                 case 1:
-                    Level.Max_Interval = (int)parameterTransform.GetChild(i).GetComponentInChildren<Slider>().value;
+                    Level.Max_Interval = (int) parameterTransform.GetChild(i).GetComponentInChildren<Slider>().value;
                     break;
                 case 2:
-                    Debug.Log(parameterTransform.GetChild(i).GetComponentInChildren<Slider>().value);
                     Level.Speed = parameterTransform.GetChild(i).GetComponentInChildren<Slider>().value;
                     break;
                 case 3:

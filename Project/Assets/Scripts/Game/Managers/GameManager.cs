@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
 
     Notes_Manager asteroid_Manager;
     public static Level level;
-    public static bool infiniteMode;
+    public static bool infiniteMode = false;
 
     [SerializeField] GameObject menus;
     static bool askAgain = true;
@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         if (infiniteMode) level = new Level();
-        else new Level(levelToLoad);
+        else new Level(1);
 
         ship = FindObjectOfType<Ship>();
 
