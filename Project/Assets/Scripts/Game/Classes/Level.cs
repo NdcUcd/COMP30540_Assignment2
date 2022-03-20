@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class Level
 {
     static int initialNbOfNotes = 5, level_number, tessiturat, max_interval, total_nb_of_notes;
@@ -15,7 +17,7 @@ public class Level
         {
             case 1:
                 tessiturat = 3;
-                max_interval = 1;
+                max_interval = 2;
                 speed = 5;
                 time_before_next_note = .5f;
                 total_nb_of_notes = 5;
@@ -44,6 +46,8 @@ public class Level
                 }
                 break;
         }
+
+        Debug.Log(level_number);
     }
 
     public static int InitialNbOfNotes
