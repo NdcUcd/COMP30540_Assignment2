@@ -1,12 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
 public class Manager : MonoBehaviour
 {
-
     public static void LoadInfiniteMode()
     {
         GameManager.infiniteMode = true;
@@ -24,7 +21,12 @@ public class Manager : MonoBehaviour
         SceneManager.LoadScene(scene_name);
     }
 
-    public static void QuitGame() {
+    public static void QuitGame()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
+
         Application.Quit();
     }
 }

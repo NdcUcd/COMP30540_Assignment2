@@ -4,10 +4,11 @@ using UnityEngine;
 public class ButtonLevel : MonoBehaviour
 {
     int index;
-    private void Start()
+    private void Awake()
     {
         index = transform.GetSiblingIndex() + 1;
-        GetComponentInChildren<TextMeshProUGUI>().text = "Level " + index;
+        //Debug.Log(GetComponent<Michsky.UI.Shift.QuickMatchButton>().buttonTitle + " " + name);
+        GetComponent<Michsky.UI.Shift.QuickMatchButton>().buttonTitle = "LEVEL " + index;
     }
     public void SetLevelValue()
     {

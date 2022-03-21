@@ -46,8 +46,6 @@ public class Level
                 }
                 break;
         }
-
-        Debug.Log(level_number);
     }
 
     public static int InitialNbOfNotes
