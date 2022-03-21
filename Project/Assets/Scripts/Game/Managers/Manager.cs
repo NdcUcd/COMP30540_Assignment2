@@ -10,7 +10,7 @@ public class Manager : MonoBehaviour
         LoadScene("Game");
     }
 
-    public static void LoadStoryMode()
+    public static void LoadRegularMode()
     {
         GameManager.infiniteMode = false;
         LoadScene("Game");

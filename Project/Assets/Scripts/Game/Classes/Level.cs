@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Level
 {
-    static int initialNbOfNotes = 5, level_number, tessiturat, max_interval, total_nb_of_notes;
+    static int initialNbOfNotes = 5, level_number, tessitura, max_interval, total_nb_of_notes;
     static float speed, time_before_next_note;
     static GameManager.Key key;
 
@@ -16,14 +16,14 @@ public class Level
         switch (level_number)
         {
             case 1:
-                tessiturat = 3;
+                tessitura = 3;
                 max_interval = 2;
                 speed = 5;
                 time_before_next_note = .5f;
                 total_nb_of_notes = 5;
                 break;
             case 2:
-                tessiturat = 4;
+                tessitura = 4;
                 max_interval = 3;
                 speed = 5;
                 time_before_next_note = 1f;
@@ -36,7 +36,7 @@ public class Level
             default:
                 if (!GameManager.infiniteMode)
                 {
-                    tessiturat = 7;
+                    tessitura = 7;
                     max_interval = 4;
                     speed = 5;
                     time_before_next_note = .5f;
@@ -66,10 +66,10 @@ public class Level
         set { max_interval = value; }
     }
 
-    public static int Tessiturat
+    public static int Tessitura
     {
-        get { return tessiturat; }
-        set { tessiturat = value; }
+        get { return tessitura; }
+        set { tessitura = value; }
     }
     public static int Total_Notes
     {

@@ -29,7 +29,7 @@ public class InfiniteModeManager : MonoBehaviour
             switch (i)
             {
                 case 0:
-                    Level.Tessiturat = (int) parameterTransform.GetChild(i).GetComponentInChildren<Slider>().value;
+                    Level.Tessitura = (int) parameterTransform.GetChild(i).GetComponentInChildren<Slider>().value;
                     break;
                 case 1:
                     Level.Max_Interval = (int) parameterTransform.GetChild(i).GetComponentInChildren<Slider>().value;

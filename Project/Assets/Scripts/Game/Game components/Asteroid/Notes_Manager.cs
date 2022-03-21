@@ -50,7 +50,7 @@ public class Notes_Manager : MonoBehaviour
         int noteIndex = 0;
 
         do
-            noteIndex = Random.Range(0, Level.Tessiturat);
+            noteIndex = Random.Range(0, Level.Tessitura);
         while (Mathf.Abs(previouNoteIndex - noteIndex) > Level.Max_Interval - 1
             || previouNoteIndex == noteIndex);  //Because I don't want the same notes 2 times in a row
         
