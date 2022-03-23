@@ -15,6 +15,9 @@ public class Level
 
         switch (level_number)
         {
+            case 0:
+                //Infinite mode
+                break;
             case 1:
                 tessitura = 3;
                 max_interval = 2;
@@ -34,16 +37,11 @@ public class Level
             //case 4:
             //    break;
             default:
-                if (!GameManager.infiniteMode)
-                {
-                    tessitura = 7;
-                    max_interval = 4;
-                    speed = 5;
-                    time_before_next_note = .5f;
-                    total_nb_of_notes = 15;
-                    //Debug.Log(tessiturat + " " + max_interval + " " + speed + " " + time_before_next_note + " " + total_nb_of_notes);
-                    //Debug.Log("Default");
-                }
+                tessitura = 7;
+                max_interval = 4;
+                speed = 5;
+                time_before_next_note = .5f;
+                total_nb_of_notes = 15;
                 break;
         }
     }

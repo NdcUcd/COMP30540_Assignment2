@@ -61,7 +61,8 @@ public class Notes_Manager : MonoBehaviour
 
     public void SpawnAsteroid(Note note)
     {
-        GameObject new_asteroid = Instantiate(asteroid_go[Random.Range(0, asteroid_go.Count)]);
+        int r = Random.Range(0, asteroid_go.Count);
+        GameObject new_asteroid = Instantiate(asteroid_go[2]);
         Asteroid asteroidScript = new_asteroid.AddComponent<Asteroid>();
         asteroidScript.Note = note.Name;
 

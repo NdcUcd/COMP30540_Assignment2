@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
 
     Notes_Manager asteroid_Manager;
     public static Level level;
-    public static bool infiniteMode = true;
+    public static bool infiniteMode = false;
 
     [SerializeField] GameObject menus;
     static bool askAgain = true;
@@ -40,6 +40,9 @@ public class GameManager : MonoBehaviour
         UpdateLevel_UI.Update_Level();
 
         asteroid_Manager = FindObjectOfType<Notes_Manager>();
+
+        if (Time.timeScale == 0) Time.timeScale = 1;
+        if (!Ship.CanMove) Ship.CanMove = true;
     }
 
     void Update()
@@ -82,7 +85,7 @@ public class GameManager : MonoBehaviour
         bool menuIsActive = menus.activeSelf;
         menus.SetActive(!menuIsActive);
 
-        if (pause) menus.transform.GetChild(0).gameObject.SetActive(menuIsActive);
+        if (pause) menus.transform.GetChild(0).gameObject.SetActive(!menuIsActive);
         else       menus.transform.GetChild(1).gameObject.SetActive(!menuIsActive);
 
         if (!menuIsActive) Time.timeScale = 0;
@@ -114,6 +117,11 @@ public class GameManager : MonoBehaviour
     public void SetAskAgain()
     {
         askAgain = !GameObject.Find("Toggle ask again").GetComponent<Toggle>().isOn;
+    }
+
+    public void LoadScene(string scene_name)
+    {
+        SceneManager.LoadScene(scene_name);
     }
 
     public int Succes_Rate

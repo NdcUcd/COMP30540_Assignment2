@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Asteroid : MonoBehaviour
@@ -13,6 +10,8 @@ public class Asteroid : MonoBehaviour
     {
         position = transform.position;
         speed = Level.Speed;
+
+        //if(note == GameManager.Notes.C3) 
     }
 
     void Update()
