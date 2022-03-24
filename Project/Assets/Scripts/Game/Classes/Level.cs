@@ -22,15 +22,15 @@ public class Level
                 tessitura = 3;
                 max_interval = 2;
                 speed = 5;
-                time_before_next_note = .5f;
-                total_nb_of_notes = 5;
+                time_before_next_note = 1f;
+                total_nb_of_notes = 25;
                 break;
             case 2:
                 tessitura = 4;
                 max_interval = 3;
                 speed = 5;
                 time_before_next_note = 1f;
-                total_nb_of_notes = 5;
+                total_nb_of_notes = 25;
                 break;
             //case 3:
             //    break;

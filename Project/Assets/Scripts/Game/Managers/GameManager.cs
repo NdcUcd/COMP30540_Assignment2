@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     static int succes_rate, levelToLoad = 1;
     static float total_notes = 0, good_notes = 0;
 
-    Notes_Manager asteroid_Manager;
+    NotesManager asteroid_Manager;
     public static Level level;
     public static bool infiniteMode = false;
 
@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
         Update_Score();
         UpdateLevel_UI.Update_Level();
 
-        asteroid_Manager = FindObjectOfType<Notes_Manager>();
+        asteroid_Manager = FindObjectOfType<NotesManager>();
 
         if (Time.timeScale == 0) Time.timeScale = 1;
         if (!Ship.CanMove) Ship.CanMove = true;
@@ -142,8 +142,11 @@ public class GameManager : MonoBehaviour
         set { askAgain = value; }
     }
 
-    public static void GoodNote()
+    public static void GoodNote(GameObject asteroid)
     {
+        Asteroid asteroidScript = asteroid.GetComponent<Asteroid>();
+        asteroidScript.audioSource.Play();
+        asteroidScript.audioHasPlayed = true;
         good_notes++;
         total_notes++;
         Update_Score();

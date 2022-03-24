@@ -41,8 +41,8 @@ public class Bullet : MonoBehaviour
 
     void Collision_With_Asteroid(GameObject asteroid_go)
     {
-        GameManager.GoodNote();
-        Destroy(asteroid_go.gameObject);
+        GameManager.GoodNote(asteroid_go);
+        asteroid_go.GetComponent<Asteroid>().DestroyAsteroidOnGoodNote();
         Destroy(gameObject);
     }
 
