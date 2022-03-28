@@ -40,11 +40,12 @@ public class Asteroid : MonoBehaviour
     {
         if (collision.gameObject.layer == 8)
         {
-            Destroy(gameObject);
-        }
-        else if (collision.gameObject.layer == 9)
-        {
             Collision_Base();
+        }
+        else if (collision.gameObject.layer == 9)   //Collide with base
+        {
+            Debug.Log("collide with layer 9: " + collision.gameObject.layer.ToString());
+            //Collision_Base();
         }
     }
 
@@ -68,7 +69,7 @@ public class Asteroid : MonoBehaviour
 
     void Collision_Base()
     {
-        GameManager.False_Note();
+        GameManager.Error();
         Destroy(gameObject);
     }
 

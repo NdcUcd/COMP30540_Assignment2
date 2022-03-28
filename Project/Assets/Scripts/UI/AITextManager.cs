@@ -19,7 +19,7 @@ public class AITextManager : MonoBehaviour
 
     int letterIndextoDisplay;
 
-    void Start()
+    void OnEnable()
     {
         textMP = GetComponentInChildren<TextMeshProUGUI>();
         panel = GetComponentInChildren<Image>();
@@ -31,7 +31,7 @@ public class AITextManager : MonoBehaviour
     {
         if (letterIndextoDisplay >= textToDisplay.Length || !displayText) return;
 
-        currentTimeBetweenLetters -= Time.deltaTime;
+        currentTimeBetweenLetters -= Time.unscaledDeltaTime;
 
         if (currentTimeBetweenLetters <= 0)
         {

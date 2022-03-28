@@ -48,7 +48,7 @@ public class Bullet : MonoBehaviour
 
     void CollisionWithWrongObject()
     {
-        GameManager.False_Note();
+        GameManager.Error();
         Destroy(gameObject);
     }
 }

@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     public static Level level;
     public static bool infiniteMode = false;
 
-    [SerializeField] GameObject menus;
+    [SerializeField] GameObject menus, canvasAI;
     static bool askAgain = true;
 
     void Start()
@@ -85,8 +85,15 @@ public class GameManager : MonoBehaviour
         bool menuIsActive = menus.activeSelf;
         menus.SetActive(!menuIsActive);
 
-        if (pause) menus.transform.GetChild(0).gameObject.SetActive(!menuIsActive);
-        else       menus.transform.GetChild(1).gameObject.SetActive(!menuIsActive);
+        if (pause) //Active pause menu
+        {
+            menus.transform.GetChild(0).gameObject.SetActive(!menuIsActive);
+        }
+        else //Active next level menu
+        {
+            menus.transform.GetChild(1).gameObject.SetActive(!menuIsActive);
+            canvasAI.SetActive(!menuIsActive);
+        }
 
         if (!menuIsActive) Time.timeScale = 0;
         else Time.timeScale = 1;
@@ -152,7 +159,7 @@ public class GameManager : MonoBehaviour
         Update_Score();
     }
 
-    public static void False_Note()
+    public static void Error()
     {
         total_notes++;
         Update_Score();
