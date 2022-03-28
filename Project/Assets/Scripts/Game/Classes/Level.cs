@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Level
 {
-    static int initialNbOfNotes = 5, level_number, tessitura, max_interval, total_nb_of_notes;
+    static int initialNbOfNotes = 5, level_number, tessitura, max_interval, total_nb_of_notes, maxLevel;
     static float speed, time_before_next_note;
     static GameManager.Key key;
 
@@ -11,6 +11,8 @@ public class Level
 
     public static void current_level(int a_level_number)
     {
+        maxLevel = 2;
+
         level_number = a_level_number;
 
         switch (level_number)
@@ -91,5 +93,11 @@ public class Level
     {
         get { return key; }
         set { key = value; }
+    }
+
+    public static int LevelMax
+    {
+        get { return maxLevel; }
+        set { maxLevel = value; }
     }
 }

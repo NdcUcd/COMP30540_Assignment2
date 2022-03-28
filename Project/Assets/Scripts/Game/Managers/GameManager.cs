@@ -1,3 +1,4 @@
+using Michsky.UI.Shift;
 using MidiJack;
 using System;
 using System.Collections.Generic;
@@ -123,7 +124,7 @@ public class GameManager : MonoBehaviour
 
     public void SetAskAgain()
     {
-        askAgain = !GameObject.Find("Toggle ask again").GetComponent<Toggle>().isOn;
+        askAgain = GameObject.Find("Toggle ask again").GetComponent<SwitchManager>().isOn;
     }
 
     public void LoadScene(string scene_name)

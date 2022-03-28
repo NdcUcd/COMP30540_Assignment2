@@ -39,7 +39,7 @@ public class NotesManager : MonoBehaviour
 
         if (GameManager.infiniteMode) return;
 
-        if (GameManager.AskAgain)
+        if (GameManager.AskAgain && (Level.Level_Number < Level.LevelMax))
         {
             if (Level.Total_Notes <= 0 && gameManager.Succes_Rate >= 90)
                 gameManager.DisplayMenu(false);
