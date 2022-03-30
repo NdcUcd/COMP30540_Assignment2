@@ -89,10 +89,12 @@ public class GameManager : MonoBehaviour
         if (pause) //Active pause menu
         {
             menus.transform.GetChild(0).gameObject.SetActive(!menuIsActive);
+            if (menus.transform.GetChild(1).gameObject.activeInHierarchy) menus.transform.GetChild(1).gameObject.SetActive(false);
         }
         else //Active next level menu
         {
             menus.transform.GetChild(1).gameObject.SetActive(!menuIsActive);
+            if (menus.transform.GetChild(0).gameObject.activeInHierarchy) menus.transform.GetChild(0).gameObject.SetActive(false);
             canvasAI.SetActive(!menuIsActive);
         }
 

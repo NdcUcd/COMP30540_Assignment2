@@ -395,7 +395,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114224424709591902, guid: 8ed2cde595d8a684694cccc8648318b6, type: 3}
       propertyPath: m_MinValue
-      value: 0.2
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 114224424709591902, guid: 8ed2cde595d8a684694cccc8648318b6, type: 3}
       propertyPath: m_Direction
@@ -6427,7 +6427,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114224424709591902, guid: 8ed2cde595d8a684694cccc8648318b6, type: 3}
       propertyPath: m_MinValue
-      value: 0.1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114224424709591902, guid: 8ed2cde595d8a684694cccc8648318b6, type: 3}
       propertyPath: m_WholeNumbers
