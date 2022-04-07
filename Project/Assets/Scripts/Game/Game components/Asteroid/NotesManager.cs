@@ -9,6 +9,7 @@ public class NotesManager : MonoBehaviour
     public static List<AudioClip> _audioClips = new List<AudioClip>();
 
     [SerializeField] GameObject line;
+    [SerializeField] TutorialManager tutorialManager;
     float time_before_next_note = 2;
     GameManager gameManager;
 
@@ -33,7 +34,7 @@ public class NotesManager : MonoBehaviour
         int node_index;
 
         if (!GameManager.tutorialMode) node_index = Get_New_Note();
-        else node_index = GetTutorialNotes();
+        else node_index = tutorialManager.GetTutorialNotes();
 
         SpawnAsteroid(GameManager.notes[node_index]);
         time_before_next_note = Level.Time_Before_Next_Note;
@@ -47,30 +48,11 @@ public class NotesManager : MonoBehaviour
             if (Level.Total_Notes <= 0 && gameManager.Succes_Rate >= 90)
                 gameManager.DisplayMenu(false);
             else
-                Level.Total_Notes--;
+                if(!GameManager.tutorialMode) Level.Total_Notes--;
         }
     }
 
-    int[] tutorialNotes = new int[] { 0, 2, 4, 7, 9, 4, 7, 9,
-                                     // 1, 3, 5, 8, 10, 5, 8, 10,
-                                      0, 1, 5, 8, 10, 5, 8, 10,
-                                      //1, 2, 6, 9, 11, 6, 9, 11,
-                                      1, 3, 4, 8, 10, 4, 8, 10,
-                                     // 2, 4, 5, 9, 11, 5, 9, 11,
-                                      0, 2, 4, 7, 9, 4, 7, 9//,
-                                    //  1, 3, 5, 8, 10, 5, 8, 10
-                                    };
 
-    int currentTutorialNoteIndex = 0;
-    private int GetTutorialNotes()
-    {
-        int note = tutorialNotes[currentTutorialNoteIndex]-1;
-        currentTutorialNoteIndex++;
-        Debug.Log(GameManager.notes[note].Name.ToString());
-        Note notePositionToMoveTo = GameManager.notes[note];
-        FindObjectOfType<AvatarController>().Move(notePositionToMoveTo);
-        return note;
-    }
 
     public void ResetTotalNotes() { Level.Total_Notes = Level.InitialNbOfNotes; }
 

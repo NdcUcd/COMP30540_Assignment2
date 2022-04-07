@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 [RequireComponent(typeof(TutorialManager))]
 public class GameManager : MonoBehaviour
@@ -44,7 +43,7 @@ public class GameManager : MonoBehaviour
 
         asteroid_Manager = FindObjectOfType<NotesManager>();
 
-        if (Time.timeScale == 0) Time.timeScale = 1;
+        if (Time.timeScale != 1) Time.timeScale = 1;
         if (!AvatarController.CanMove) AvatarController.CanMove = true;
 
         if (tutorialMode) EnableTutorialMode();
@@ -68,7 +67,7 @@ public class GameManager : MonoBehaviour
 
     void OnGUI()
     {
-        if (!tutorialMode)
+        if (!tutorialMode)  //No need to check for keys during tutorial since the user won't play
         {
             Event e = Event.current;
 
@@ -114,6 +113,7 @@ public class GameManager : MonoBehaviour
         {
             menus.transform.GetChild(1).gameObject.SetActive(!menuIsActive);
             if (menus.transform.GetChild(0).gameObject.activeInHierarchy) menus.transform.GetChild(0).gameObject.SetActive(false);
+            AITextManager.textIndex = 1;
             canvasAI.SetActive(!menuIsActive);
         }
 
@@ -199,5 +199,12 @@ public class GameManager : MonoBehaviour
     public enum Key
     {
         key_G2, key_F4, key_F3, key_C1, key_C2, key_C3, key_C4, key_C5
+    }
+
+    public enum GameMode
+    {
+        Story,
+        Infinite,
+        Tuto
     }
 }

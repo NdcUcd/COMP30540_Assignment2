@@ -6959,7 +6959,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4825937824470215840, guid: c4b5a17895837ad478efcb88ebb293fe, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetInfiniteMode
+      value: SetTutorialMode
       objectReference: {fileID: 0}
     - target: {fileID: 4825937824470215840, guid: c4b5a17895837ad478efcb88ebb293fe, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
@@ -8735,7 +8735,10 @@ PrefabInstance:
     - target: {fileID: 6557827139057273419, guid: 53ed85343dfd8bd49981ff5f175c92bb, type: 3}
       propertyPath: texts.Array.data[4]
       value: 'Welcome to the tutorial! I''m gonnna show you how to play the game
-        as soon as you are ready and press the space bar! '
+        as soon as you are ready.
+
+        Press the space bar so I can sing the
+        song of my people! '
       objectReference: {fileID: 0}
     - target: {fileID: 6557827139659866633, guid: 53ed85343dfd8bd49981ff5f175c92bb, type: 3}
       propertyPath: m_Name

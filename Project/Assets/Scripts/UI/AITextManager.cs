@@ -19,12 +19,14 @@ public class AITextManager : MonoBehaviour
 
     int letterIndextoDisplay;
 
+    public static int textIndex;
+
     void OnEnable()
     {
         textMP = GetComponentInChildren<TextMeshProUGUI>();
         panel = GetComponentInChildren<Image>();
         Init();
-        SetTextToDisplay(0);
+        SetTextToDisplay();
     }
 
     void Update()
@@ -53,7 +55,7 @@ public class AITextManager : MonoBehaviour
         currentTimeBetweenLetters = initialTimeBetweenLetters;
     }
 
-    public void SetTextToDisplay(int textIndex)
+    public void SetTextToDisplay()
     {
         displayText = true;
 

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
 public class Manager : MonoBehaviour
 {
     public static void LoadInfiniteMode()
@@ -24,6 +25,13 @@ public class Manager : MonoBehaviour
         GameManager.SetTutorialMode(isInInfiniteMode);
         LoadScene("Game");
     }
+
+    public void SetTutorialMode(bool isInTutorialMode)
+    {
+        GameManager.tutorialMode = isInTutorialMode;
+        LoadScene("Game");
+    }
+
     public static void QuitGame()
     {
 #if UNITY_EDITOR
