@@ -36,6 +36,8 @@ public class NotesManager : MonoBehaviour
         if (!GameManager.tutorialMode) node_index = Get_New_Note();
         else node_index = tutorialManager.GetTutorialNotes();
 
+        if (node_index < 0) return;   //Only occurs when end of tutorial is reached
+
         SpawnAsteroid(GameManager.notes[node_index]);
         time_before_next_note = Level.Time_Before_Next_Note;
 

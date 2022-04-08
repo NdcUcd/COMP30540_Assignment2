@@ -14,11 +14,11 @@ public class TutorialManager : MonoBehaviour
 
     int[] tutorialNotes = new int[] { 0, 2, 4, 7, 9, 4, 7, 9,
                                      // 1, 3, 5, 8, 10, 5, 8, 10,
-                                      0, 1, 5, 8, 10, 5, 8, 10,
+                                      //0, 1, 5, 8, 10, 5, 8, 10,
                                       //1, 2, 6, 9, 11, 6, 9, 11,
-                                      1, 3, 4, 8, 10, 4, 8, 10,
+                                      //1, 3, 4, 8, 10, 4, 8, 10,
                                      // 2, 4, 5, 9, 11, 5, 9, 11,
-                                      0, 2, 4, 7, 9, 4, 7, 9//,
+                                      //0, 2, 4, 7, 9, 4, 7, 9//,
                                     //  1, 3, 5, 8, 10, 5, 8, 10
                                     };
 
@@ -74,8 +74,16 @@ public class TutorialManager : MonoBehaviour
 
     public int GetTutorialNotes()
     {
+        if (currentTutorialNoteIndex > tutorialNotes.Length - 1) {
+            FindObjectOfType<NotesManager>().enabled = false;
+            AITextManager.textIndex = 2;
+            AIPanel.SetActive(true);
+            return -1;  //Indicates that the end of the tutorial has been reached
+        };
+
         int note = tutorialNotes[currentTutorialNoteIndex];
         currentTutorialNoteIndex++;
+
         Note notePositionToMoveTo = GameManager.notes[note];
         avatarController.Move(notePositionToMoveTo);
         EnableNewKey(note);

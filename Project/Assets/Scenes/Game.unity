@@ -429,16 +429,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6557827139057273419, guid: 53ed85343dfd8bd49981ff5f175c92bb, type: 3}
       propertyPath: texts.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6557827139057273419, guid: 53ed85343dfd8bd49981ff5f175c92bb, type: 3}
       propertyPath: texts.Array.data[0]
-      value: dsasdasd
+      value: "Welcome to the tutorial! I'm gonna show you how to play! At the top
+        of your screen you can see a keyboard. I will play that level and destroy
+        the asteroids for you! But pay attention to what happens on this keyboard
+        since it shows which keys should be pressed! \nPress SPACE when you are ready
+        for the tutorial to begin!"
       objectReference: {fileID: 0}
     - target: {fileID: 6557827139057273419, guid: 53ed85343dfd8bd49981ff5f175c92bb, type: 3}
       propertyPath: texts.Array.data[1]
       value: Your success rate is above 90%! You may want to try a more advanced
         level?
+      objectReference: {fileID: 0}
+    - target: {fileID: 6557827139057273419, guid: 53ed85343dfd8bd49981ff5f175c92bb, type: 3}
+      propertyPath: texts.Array.data[2]
+      value: 'Thanks for going through the tutorial! Press ESC to go back to main
+        menu and chose a game mode! You can come back here whenever you want if you
+        want to refresh your mind! '
       objectReference: {fileID: 0}
     - target: {fileID: 6557827139659866633, guid: 53ed85343dfd8bd49981ff5f175c92bb, type: 3}
       propertyPath: m_Name
@@ -446,7 +456,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6557827139659866633, guid: 53ed85343dfd8bd49981ff5f175c92bb, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6557827139659866637, guid: 53ed85343dfd8bd49981ff5f175c92bb, type: 3}
       propertyPath: m_Pivot.x
@@ -543,7 +553,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6557827139897876669, guid: 53ed85343dfd8bd49981ff5f175c92bb, type: 3}
       propertyPath: m_fontSize
-      value: 18
+      value: 62
       objectReference: {fileID: 0}
     - target: {fileID: 6557827139897876669, guid: 53ed85343dfd8bd49981ff5f175c92bb, type: 3}
       propertyPath: m_margin.x
@@ -563,7 +573,7 @@ PrefabInstance:
       objectReference: {fileID: 21728410361126204, guid: b04f3173f946b754db673ac13842f4c1, type: 2}
     - target: {fileID: 6557827139897876669, guid: 53ed85343dfd8bd49981ff5f175c92bb, type: 3}
       propertyPath: m_enableAutoSizing
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6557827139897876669, guid: 53ed85343dfd8bd49981ff5f175c92bb, type: 3}
       propertyPath: m_VerticalAlignment
@@ -4904,11 +4914,11 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 27
-  m_fontSizeBase: 27
+  m_fontSize: 27.4
+  m_fontSizeBase: 15
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 14
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
