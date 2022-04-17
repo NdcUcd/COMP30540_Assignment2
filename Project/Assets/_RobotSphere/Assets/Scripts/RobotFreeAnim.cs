@@ -6,20 +6,24 @@ public class RobotFreeAnim : MonoBehaviour {
 
 	Vector3 rot = Vector3.zero;
 	float rotSpeed = 40f;
-	Animator anim;
+	static Animator anim;
 
-	// Use this for initialization
 	void Awake()
 	{
 		anim = gameObject.GetComponent<Animator>();
 		gameObject.transform.eulerAngles = rot;
+		if (Time.timeScale != 1) Time.timeScale = 1;
 	}
 
-	// Update is called once per frame
-	void Update()
+    void Update()
 	{
 		gameObject.transform.eulerAngles = rot;
 	}
+
+	//public static void OpenAnimation()
+ //   {
+	//	anim.SetBool("Open_Anim", true);
+	//}
 
 	void CheckKey()
 	{

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -74,7 +73,8 @@ public class TutorialManager : MonoBehaviour
 
     public int GetTutorialNotes()
     {
-        if (currentTutorialNoteIndex > tutorialNotes.Length - 1) {
+        if (currentTutorialNoteIndex > tutorialNotes.Length - 1)
+        {
             FindObjectOfType<NotesManager>().enabled = false;
             AITextManager.textIndex = 2;
             AIPanel.SetActive(true);

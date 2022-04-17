@@ -24,26 +24,31 @@ public class Level
                 tessitura = 3;
                 max_interval = 2;
                 speed = 5;
-                time_before_next_note = 1f;
-                total_nb_of_notes = 1;
+                time_before_next_note = 1.5f;
+                total_nb_of_notes = 5;
                 break;
             case 2:
                 tessitura = 4;
                 max_interval = 3;
                 speed = 5;
-                time_before_next_note = 1f;
-                total_nb_of_notes = 1;
+                time_before_next_note = 1.25f;
+                total_nb_of_notes = 5;
                 break;
             //case 3:
             //    break;
-            //case 4:
-            //    break;
+            case 10:
+                tessitura = 11;
+                max_interval = 11;
+                speed = 4;
+                time_before_next_note = 1f;
+                total_nb_of_notes = 30;
+                break;
             default:
                 tessitura = 7;
-                max_interval = 4;
+                max_interval = 3;
                 speed = 5;
-                time_before_next_note = .5f;
-                total_nb_of_notes = 15;
+                time_before_next_note = 1f;
+                total_nb_of_notes = 5;
                 break;
         }
     }
