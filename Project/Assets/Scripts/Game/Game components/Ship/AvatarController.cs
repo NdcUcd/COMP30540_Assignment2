@@ -39,8 +39,6 @@ public class AvatarController : MonoBehaviour
         bulletTransform.SetParent(this.transform);
         bulletTransform.position = transform.position;
         bulletTransform.name = "Bullet " + transform.childCount.ToString();
-
-        //Debug.Log("shoots " + note.ToString());
     }
 
     public void DestroyAllBullets()

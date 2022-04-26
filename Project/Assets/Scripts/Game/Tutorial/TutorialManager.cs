@@ -13,12 +13,8 @@ public class TutorialManager : MonoBehaviour
 
     int[] tutorialNotes = new int[] { 0, 2, 4, 7, 9, 4, 7, 9,
                                       1, 3, 5, 8, 10, 5, 8, 10,
-                                      0, 1, 5, 8, 10, 5, 8, 10,
-                                      1, 2, 6, 9, 11, 6, 9, 11,
                                       1, 3, 4, 8, 10, 4, 8, 10,
-                                      2, 4, 5, 9, 11, 5, 9, 11,
-                                      0, 2, 4, 7, 9, 4, 7, 9,
-                                      1, 3, 5, 8, 10, 5, 8, 10
+                                      0, 2, 4, 7, 9, 4, 7, 9
                                     };
 
     int currentTutorialNoteIndex = 0;

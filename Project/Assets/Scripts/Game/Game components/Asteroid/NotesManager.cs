@@ -45,12 +45,12 @@ public class NotesManager : MonoBehaviour
 
         if (GameManager.infiniteMode) return;
 
-        if (GameManager.AskAgain && (Level.Level_Number < Level.LevelMax))
+        if (GameManager.AskAgain && (Level.Level_Number <= Level.LevelMax))
         {
             if (Level.Total_Notes <= 0 && gameManager.Succes_Rate >= 90)
                 gameManager.DisplayMenu(false);
             else
-                if(!GameManager.tutorialMode) Level.Total_Notes--;
+                if(!GameManager.tutorialMode && Level.Total_Notes > 0) Level.Total_Notes--;
         }
     }
 
@@ -66,7 +66,7 @@ public class NotesManager : MonoBehaviour
         do
             noteIndex = Random.Range(0, Level.Tessitura);
         while (Mathf.Abs(previouNoteIndex - noteIndex) > Level.Max_Interval - 1
-            || previouNoteIndex == noteIndex);  //Because I don't want the same notes 2 times in a row
+            || previouNoteIndex == noteIndex);  //Because I don't want the same note 2 times in a row
         
         previouNoteIndex = noteIndex;
 

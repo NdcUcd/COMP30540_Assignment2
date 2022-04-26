@@ -15,6 +15,10 @@ public class Manager : MonoBehaviour
         LoadScene("Game");
     }
 
+    public static void LoadMenu() {
+        LoadScene("Menu");
+    }
+
     static void LoadScene(string scene_name)
     {
         SceneManager.LoadScene(scene_name);

@@ -1,5 +1,5 @@
 using Michsky.UI.Shift;
-using MidiJack;
+//using MidiJack;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -60,9 +60,39 @@ public class GameManager : MonoBehaviour
         total_notes = good_notes = 0;
     }
 
+    List<int> keysPressed = new List<int>();    //To manage keys pressed and keys up -> not to shoot continuously
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape)) DisplayMenu(true);
+
+        //if (!tutorialMode)  //No need to check for keys during tutorial since the user won't play
+        //{
+        //    if (AvatarController.CanMove)
+        //    {
+        //        //Inputs from MIDI keyboard
+        //        foreach (int key in keyboard_note_number)
+        //        {
+        //            if (MidiMaster.GetKeyDown(key))
+        //            {
+        //                int key_index = Array.IndexOf(keyboard_note_number, key);
+
+        //                if (key_index < keys.Length && key_index >= 0 && !keysPressed.Contains(key))
+        //                {
+        //                    ship.Move(keys[key_index]);
+        //                    keysPressed.Add(key);
+        //                    return;
+        //                }
+        //            }
+        //            else if (MidiMaster.GetKeyUp(key))
+        //            {
+        //                keysPressed.Remove(key);
+        //            }
+        //        }
+
+        //    }
+        //}
+
     }
 
     void OnGUI()
@@ -80,21 +110,8 @@ public class GameManager : MonoBehaviour
                         ship.Move(key);
                         return;
                     }
-
-                //Inputs from MIDI keyboard
-                foreach (int key in keyboard_note_number)
-                    if (MidiMaster.GetKeyDown(key))
-                    {
-                        int key_index = Array.IndexOf(keyboard_note_number, key);
-
-                        if (key_index < keys.Length && key_index >= 0)
-                            ship.Move(keys[key_index]);
-
-                        return;
-                    }
             }
         }
-
     }
 
     public static void SetLevelNbToLoad(int nb) { levelToLoad = nb; }
@@ -113,7 +130,11 @@ public class GameManager : MonoBehaviour
         {
             menus.transform.GetChild(1).gameObject.SetActive(!menuIsActive);
             if (menus.transform.GetChild(0).gameObject.activeInHierarchy) menus.transform.GetChild(0).gameObject.SetActive(false);
-            AITextManager.textIndex = 1;
+
+            if(Level.Level_Number >= Level.LevelMax)
+                AITextManager.textIndex = 3;
+            else
+                AITextManager.textIndex = 1;
             canvasAI.SetActive(!menuIsActive);
         }
 
@@ -135,12 +156,20 @@ public class GameManager : MonoBehaviour
         UpdateScore.Update_Score(succes_rate);
     }
 
-    public void NextLevel() { 
-        Level.current_level(Level.Level_Number + 1);
-        UpdateLevel_UI.Update_Level();
-        asteroid_Manager.DestroyAllAsteroids();
-        ship.DestroyAllBullets();
-        succes_rate = 0;
+    public void NextLevel()
+    {
+        if (Level.Level_Number >= Level.LevelMax)
+        {
+            Manager.LoadMenu();
+        }
+        else
+        {
+            Level.current_level(Level.Level_Number + 1);
+            UpdateLevel_UI.Update_Level();
+            asteroid_Manager.DestroyAllAsteroids();
+            ship.DestroyAllBullets();
+            succes_rate = 0;
+        }
     }
 
     public void SetAskAgain()

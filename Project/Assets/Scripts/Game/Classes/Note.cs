@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Note
@@ -11,7 +9,8 @@ public class Note
     //time before next note spawns
     float duration = 2f;
 
-    public Note(GameManager.Notes name) {
+    public Note(GameManager.Notes name)
+    {
         this.name = name;
 
         //Get position at which notes are
@@ -20,7 +19,8 @@ public class Note
         key_associated = GameManager.keys[(int)name];
     }
 
-    public GameManager.Notes Name {
+    public GameManager.Notes Name
+    {
         get { return this.name; }
         set { this.name = value; }
     }

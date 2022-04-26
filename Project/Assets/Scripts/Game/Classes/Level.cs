@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class Level
 {
     static int initialNbOfNotes = 5, level_number, tessitura, max_interval, total_nb_of_notes, maxLevel;
@@ -11,7 +9,7 @@ public class Level
 
     public static void current_level(int a_level_number)
     {
-        maxLevel = 2;
+        maxLevel = 10;
 
         level_number = a_level_number;
 
@@ -34,19 +32,59 @@ public class Level
                 time_before_next_note = 1.25f;
                 total_nb_of_notes = 5;
                 break;
-            //case 3:
-            //    break;
-            case 10:
+            case 3:
+                tessitura = 5;
+                max_interval = 3;
+                speed = 5;
+                time_before_next_note = 1.25f;
+                total_nb_of_notes = 5;
+                break;
+            case 4:
+                tessitura = 6;
+                max_interval = 4;
+                speed = 5;
+                time_before_next_note = 1.25f;
+                total_nb_of_notes = 5;
+                break;
+            case 5:
+                tessitura = 7;
+                max_interval = 4;
+                speed = 5;
+                time_before_next_note = 1.25f;
+                total_nb_of_notes = 5;
+                break;
+            case 6:
+                tessitura = 8;
+                max_interval = 5;
+                speed = 5;
+                time_before_next_note = 1.25f;
+                total_nb_of_notes = 5;
+                break;
+            case 7:
+                tessitura = 9;
+                max_interval = 6;
+                speed = 5;
+                time_before_next_note = 1.25f;
+                total_nb_of_notes = 5;
+                break;
+            case 8:
+                tessitura = 10;
+                max_interval = 7;
+                speed = 5;
+                time_before_next_note = 1.25f;
+                total_nb_of_notes = 5;
+                break;
+            case 9:
+                tessitura = 11;
+                max_interval = 8;
+                speed = 5;
+                time_before_next_note = 1.25f;
+                total_nb_of_notes = 5;
+                break;
+            default:
                 tessitura = 11;
                 max_interval = 11;
                 speed = 4;
-                time_before_next_note = 1f;
-                total_nb_of_notes = 30;
-                break;
-            default:
-                tessitura = 7;
-                max_interval = 3;
-                speed = 5;
                 time_before_next_note = 1f;
                 total_nb_of_notes = 5;
                 break;
